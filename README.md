@@ -140,3 +140,5 @@ Suitable for banking and enterprise applications
 
 Gopika
 Automation Testing | Selenium | PyTest | QA Engineer
+<img width="1917" height="948" alt="image" src="https://github.com/user-attachments/assets/817b98f8-17bb-4364-9e3e-a1132c05f03d" />
+
