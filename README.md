@@ -1,144 +1,142 @@
-# Banking-Application-Automation-Testing-Framework
-📌 Project Overview
+# Banking Automation Testing Framework
 
-This project is a Selenium Automation Testing Framework built using Python, PyTest, and Page Object Model (POM) to validate core functionalities of a banking web application.
-It simulates real-world banking scenarios such as login validation and fund transfer flow validation, with professional reporting using Allure HTML Reports.
+## 🚀 Project Overview
 
-The framework is designed to be scalable, maintainable, and recruiter-ready, following industry best practices used in enterprise QA teams.
+This project is a **professional automation testing framework** for a digital banking application.  
+It covers **UI automation, API testing, and database validation**, providing **end-to-end test coverage** with modern CI/CD practices.  
 
-🎯 Objectives
+---
 
-Automate functional and regression testing for a banking application
+## 🎯 Objectives
 
-Validate critical user flows like authentication and dashboard access
+- Automate **login, account management, fund transfer, and transaction history**.
+- Validate **fund transfer logic** through **UI + DB integration**.
+- Ensure **data consistency** between front-end and database.
+- Implement **insufficient balance checks**.
+- Integrate with **CI/CD pipelines** and **Allure reporting**.
 
-Generate interactive and detailed test execution reports
+---
 
-Demonstrate real-world QA automation skills for interviews
+## 🏦 Application Modules Automated
 
-🛠️ Tech Stack
+1. **Login & Security Testing**
+   - Valid / Invalid login
+   - OTP simulation
+   - Session timeout handling
+   - CAPTCHA simulation
 
-Language: Python 3.13
+2. **Account Dashboard Validation**
+   - Balance display
+   - Recent transactions
+   - Account number masking
 
-Automation Tool: Selenium WebDriver
+3. **Fund Transfer Module**
+   - Add beneficiary
+   - Transfer funds
+   - Validate success message
+   - Database validation
 
-Test Framework: PyTest
+4. **Transaction History**
+   - UI vs DB comparison
+   - Date-range filtering
+   - Export report testing
 
-Design Pattern: Page Object Model (POM)
+5. **API Testing**
+   - Login API
+   - Transfer API
+   - Balance API
+   - Transaction API
 
-Reporting: Allure HTML Reports
+6. **Database Testing**
+   - Validate transactions stored correctly
+   - Validate balance updates
+   - Insufficient balance scenarios
 
-Browser: Google Chrome
+---
 
-Driver Management: WebDriver Manager
+## 🛠 Tech Stack
 
-📂 Project Structure
+| Area | Tools / Framework |
+|------|------------------|
+| UI Automation | Selenium + Python |
+| API Testing | PyTest + Requests |
+| Database | MySQL / PostgreSQL |
+| Framework | Hybrid (POM + Data-Driven) |
+| Reporting | Allure / Extent Reports |
+| CI/CD | GitHub Actions / Azure DevOps |
+| Version Control | Git |
+
+---
+
+## 💾 Database Setup
+
+1. Install **MySQL Community Server**  
+2. Open **MySQL Workbench**  
+3. Create **Test Database:**
+
+```sql
+CREATE DATABASE banking_test;
+USE banking_test;
+Create customers table:
+
+CREATE TABLE customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    balance DECIMAL(10,2)
+);
+Insert test users:
+
+INSERT INTO customers (name, email, balance) VALUES 
+('Test User','testuser@gmail.com',5000.00),
+('Receiver','receiver@gmail.com',2000.00);
+⚙️ How to Run
+1️⃣ Setup Python Environment
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+2️⃣ Run Tests
+a) Database Tests
+pytest tests/test_db_fund_transfer.py -v
+pytest tests/test_db_insufficient_balance.py -v
+b) UI + DB Integration Tests
+pytest tests/test_ui_db_fund_transfer.py -v
+3️⃣ Generate Allure Reports
+pytest --alluredir=reports
+allure serve reports
+📁 Project Structure
 Automation_Banking_Project/
 │
-├── pages/
-│   ├── login_page.py
-│   └── dashboard_page.py
-│
-├── tests/
-│   ├── test_login.py
-│   └── test_fund_transfer.py
-│
-├── allure-results/
-├── screenshots/
-├── venv/
-├── requirements.txt
-└── README.md
+├─ db/                  # DB utilities and connectors
+├─ tests/               # Test scripts (UI, DB, API)
+├─ pages/               # POM classes for Selenium
+├─ reports/             # Allure reports
+├─ .github/workflows/   # CI/CD GitHub Actions
+├─ requirements.txt
+├─ README.md
+🔧 CI/CD Integration
+GitHub Actions configured to:
 
-🧩 Framework Design (POM)
+Run DB & UI tests on push / pull request
 
-Each web page is represented as a separate Python class
+Generate Allure reports
 
-Locators and actions are isolated from test logic
+Fail build if any critical test fails
 
-Improves maintainability and reusability
+🧠 Key Learning Outcomes
+Full-stack automation: UI + API + DB
 
-Reduces test failure impact when UI changes
+Hybrid framework design (POM + Data-driven)
 
-✅ Test Scenarios Covered
-🔐 Login Validation
+Transaction-level DB testing with MySQL
 
-Verify successful login with valid credentials
+Insufficient balance handling
 
-Confirm dashboard loads after authentication
+CI/CD with GitHub Actions
 
-💰 Fund Transfer Simulation
+Allure reporting for professional dashboards
 
-Validate post-login dashboard availability
+“I designed a professional automation framework for digital banking, integrating Selenium, PyTest, MySQL, API testing, and CI/CD pipelines.
+It validates end-to-end business scenarios including fund transfer, account management, and transaction history, ensuring consistency between UI and database, while providing Allure reports for actionable insights.”
 
-Simulate fund transfer flow (demo application)
-
-Ensure page integrity and navigation
-
-⏱️ Synchronization Strategy
-
-Explicit waits using WebDriverWait
-
-Handles dynamic page loading
-
-Prevents flaky test execution
-
-📊 Reporting with Allure
-
-Generates interactive HTML reports
-
-Displays:
-
-Test status (Pass/Fail)
-
-Execution time
-
-Test steps and severity
-
-Useful for QA teams and stakeholders
-
-Run tests with Allure:
-pytest -v --alluredir=allure-results
-
-View Allure report:
-allure serve allure-results
-
-🔁 Regression Testing
-
-This framework supports regression testing, ensuring that existing functionalities remain unaffected after new changes or enhancements.
-
-🚀 How to Run the Project
-1️⃣ Clone or copy the project
-git clone <repository-url>
-
-2️⃣ Create virtual environment
-python -m venv venv
-venv\Scripts\activate
-
-3️⃣ Install dependencies
-pip install -r requirements.txt
-
-4️⃣ Execute tests
-pytest -v
-
-📈 Why This Project Is Recruiter-Attractive
-
-Uses industry-standard automation tools
-
-Implements Page Object Model
-
-Includes reporting with Allure
-
-Handles real-world issues like waits and imports
-
-Suitable for banking and enterprise applications
-
-🧠 Interview Talking Point
-
-“I developed a Selenium-PyTest automation framework using Page Object Model for a banking application and integrated Allure reporting to generate detailed HTML reports for regression testing.”
-
-👩‍💻 Author
-
-Gopika
-Automation Testing | Selenium | PyTest | QA Engineer
-<img width="1917" height="948" alt="image" src="https://github.com/user-attachments/assets/817b98f8-17bb-4364-9e3e-a1132c05f03d" />
 
